@@ -21,6 +21,33 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.component.spec.ts" />
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".editorconfig" />
+    <Content Include=".travis.yml" />
+    <Content Include="CHANGELOG.md" />
+    <Content Include="LICENSE" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="index.html" />
+    <Content Include="karma-test-shim.js" />
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.config.js" />
+    <Content Include="styles.css" />
+    <Content Include="systemjs.config.extras.js" />
+    <Content Include="systemjs.config.js" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
