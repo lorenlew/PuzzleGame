@@ -17,6 +17,25 @@ import { Board } from './models/board';
 export class BoardComponent implements OnInit {
   board: Board;
   dimension: number = 2;
+  numberOfSteps: number = 0;
+
+  get isBoardHasOrderedState(): boolean {
+    if (!this.board) {
+      return true;
+    }
+    let sortedTalesByValue: Tile[] = this.board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
+
+    let isBoardHasOrderedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
+      let rightTile: Tile = array[index + 1];
+      let isTileInTheCorrectOrder: boolean = rightTile
+        ? parseInt(element.positionX + "" + element.positionY) <
+        parseInt(rightTile.positionX + "" + rightTile.positionY)
+        : true;
+
+      return isTileInTheCorrectOrder;
+    });
+    return isBoardHasOrderedState;
+  }
 
   constructor(private boardService: BoardService, private sanitizer: DomSanitizer) {
   }
@@ -41,6 +60,7 @@ export class BoardComponent implements OnInit {
       tile.positionX = this.board.emptyCell.positionX;
       tile.positionY = this.board.emptyCell.positionY;
       this.board.emptyCell = newEmptyCell;
+      this.numberOfSteps++;
     }
   }
 
@@ -51,6 +71,7 @@ export class BoardComponent implements OnInit {
       this.board = this.boardService.generateConfiguredBoard(this.dimension);
       stateChanged = true;
     }
+    this.numberOfSteps = 0;
   }
 
   private isAdjacentCell(tile: Tile): boolean {
@@ -58,24 +79,5 @@ export class BoardComponent implements OnInit {
       (Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
       tile.positionY === this.board.emptyCell.positionY &&
       (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
-  }
-
-
-  get isBoardHasOrderedState(): boolean {
-    if (!this.board) {
-      return true;
-    }
-    let sortedTalesByValue: Tile[] = this.board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
-
-    let isBoardHasOrderedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
-      let rightTile: Tile = array[index + 1];
-      let isTileInTheCorrectOrder: boolean = rightTile ?
-        parseInt(element.positionX + "" + element.positionY) <
-        parseInt(rightTile.positionX + "" + rightTile.positionY)
-        : true;
-
-      return isTileInTheCorrectOrder;
-    });
-    return isBoardHasOrderedState;
   }
 }

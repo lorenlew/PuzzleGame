@@ -1,12 +1,14 @@
+<div>
+  Number of steps: {{numberOfSteps}}.
+</div>
 <button (click)="restartTheGame()">Restart the game</button>
 
-<div>
+<div [class.blocked-board]="isBoardHasOrderedState">
   <div (click)="tryMoveTileToAnEmptyCell(tile)" *ngFor="let tile of board.randomlyPositionedTiles" class="tile"
        [style.top.px]="getVerticalCssOffset(tile)"
        [style.left.px]="getHorizontalCssOffset(tile)">
     {{tile.value}}
-  </div>
-</div>
+  </div></div>
 
 <div *ngIf="isBoardHasOrderedState">
   <span class="success-message">Puzzle solved!</span>
