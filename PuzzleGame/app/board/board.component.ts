@@ -16,7 +16,7 @@ import { Board } from './models/board';
 })
 export class BoardComponent implements OnInit {
   board: Board;
-  dimension: number = 2;
+  dimension: number = 3;
   numberOfSteps: number = 0;
 
   get isBoardHasOrderedState(): boolean {
