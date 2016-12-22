@@ -2,37 +2,41 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 
 import { Tile } from './models/tile';
+import { Board } from './models/board';
 
 @Injectable()
 export class BoardService {
 
-  generateRandomlyPositionedTiles(boardDimension: number): Tile[] {
+  generateConfiguredBoard(boardDimension: number): Board {
     let nonPositionedTiles: Tile[] = this.generateNonPositionedTiles(boardDimension);
-    let randomizedTiles: Tile[] = this.randomizeTiles(nonPositionedTiles, boardDimension);
+    let configuredBoard: Board = this.getRandomizedTiles(nonPositionedTiles, boardDimension);
 
-    return randomizedTiles;
+    return configuredBoard;
   }
 
-  private randomizeTiles(nonPositionedTiles: Tile[], boardDimension: number): Tile[] {
+  private getRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
     let tiles: Tile[] = Array.from(nonPositionedTiles);
+    let tilesNumber: number = tiles.length;
     let tileIndex: number = 0;
+    let tileToRemove: Tile;
 
     for (let i = 1; i <= boardDimension; i++) {
       for (let j = 1; j <= boardDimension; j++) {
         let currentTile = tiles[tileIndex];
-        if (currentTile) {
-          currentTile.positionX = i;
-          currentTile.positionY = j;
-          tileIndex++;
+        currentTile.positionX = i;
+        currentTile.positionY = j;
+        tileIndex++;
+        if (currentTile.value === tilesNumber) {
+          tileToRemove = currentTile;
         }
       }
     }
 
-    return tiles;
+    return new Board(tiles.filter(item => item.value !== tileToRemove.value), tileToRemove);
   }
 
   private generateNonPositionedTiles(boardDimension: number): Tile[] {
-    let numberOfTilesToCreate: number = boardDimension * boardDimension - 1;
+    let numberOfTilesToCreate: number = boardDimension * boardDimension;
     let tilesValues: number[] = this.generateShuffledTilesValues(numberOfTilesToCreate);
     let tiles: Tile[] = new Array<Tile>();
 

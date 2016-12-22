@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
+import { BoardService } from './board.service';
 import { Tile } from './models/tile';
 import { Cell } from './models/cell';
-import { BoardService } from './board.service';
+import { Board } from './models/board';
+
 
 @Component({
   moduleId: module.id,
@@ -13,16 +15,14 @@ import { BoardService } from './board.service';
   providers: [BoardService]
 })
 export class BoardComponent implements OnInit {
-  tiles: Tile[];
+  board: Board;
   dimension: number = 3;
-  private emptyCell: Cell;
 
   constructor(private boardService: BoardService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
-    this.tiles = this.boardService.generateRandomlyPositionedTiles(this.dimension);
-    debugger;
+    this.board = this.boardService.generateConfiguredBoard(this.dimension);
   }
 
   getHorizontalCssOffset(tile: Tile): SafeStyle {
@@ -33,8 +33,17 @@ export class BoardComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustStyle(tile.verticalCssOffset);
   }
 
-  moveTileToAnEmptyPlace(tile: Tile) :void {
-    tile.positionX = 6;
-    tile.positionY = 6;
+  tryMoveTileToAnEmptyCell(tile: Tile): void {
+    if (this.isAdjacentCell(tile)) {
+      let newEmptyCell: Cell = new Cell(tile.positionX, tile.positionY);
+      tile.positionX = this.board.emptyCell.positionX;
+      tile.positionY = this.board.emptyCell.positionY;
+      this.board.emptyCell = newEmptyCell;
+    }
+  }
+
+  private isAdjacentCell(tile: Tile) {
+    return tile.positionX === this.board.emptyCell.positionX &&(Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
+           tile.positionY === this.board.emptyCell.positionY && (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
   }
 }

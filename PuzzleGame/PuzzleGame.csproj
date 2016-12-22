@@ -31,6 +31,7 @@
     <TypeScriptCompile Include="app\board\board.component.spec.ts" />
     <TypeScriptCompile Include="app\board\board.component.ts" />
     <TypeScriptCompile Include="app\board\models\cell.ts" />
+    <TypeScriptCompile Include="app\board\models\board.ts" />
     <TypeScriptCompile Include="app\board\models\tile.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
