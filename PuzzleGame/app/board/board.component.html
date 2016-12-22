@@ -1,7 +1,13 @@
-<div (click) ="tryMoveTileToAnEmptyCell(tile)"  *ngFor="let tile of board.randomlyPositionedTiles" class="tile"
-     [style.top]="getVerticalCssOffset(tile)"
-     [style.left]="getHorizontalCssOffset(tile)">
-  {{tile.value}}
+<button (click)="restartTheGame()">Restart the game</button>
+
+<div>
+  <div (click)="tryMoveTileToAnEmptyCell(tile)" *ngFor="let tile of board.randomlyPositionedTiles" class="tile"
+       [style.top.px]="getVerticalCssOffset(tile)"
+       [style.left.px]="getHorizontalCssOffset(tile)">
+    {{tile.value}}
+  </div>
 </div>
 
-<button (click) ="restartTheGame()">Restart the game</button>
+<div *ngIf="isBoardHasOrderedState">
+  <span class="success-message">Puzzle solved!</span>
+</div>

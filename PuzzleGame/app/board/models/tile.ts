@@ -12,10 +12,10 @@ export class Tile extends Cell {
   }
 
   get horizontalCssOffset(): string {
-    return this.positionX * Tile.positionOffsetValue + "px";
+    return (this.positionY * Tile.positionOffsetValue).toString();
   }
 
   get verticalCssOffset(): string {
-    return this.positionY * Tile.positionOffsetValue + "px";
+    return (this.positionX * Tile.positionOffsetValue).toString();
   }
 }

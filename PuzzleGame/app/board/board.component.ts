@@ -16,13 +16,15 @@ import { Board } from './models/board';
 })
 export class BoardComponent implements OnInit {
   board: Board;
-  dimension: number = 3;
+  dimension: number = 2;
 
   constructor(private boardService: BoardService, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
-    this.board = this.boardService.generateConfiguredBoard(this.dimension);
+    while (this.isBoardHasOrderedState) {
+      this.board = this.boardService.generateConfiguredBoard(this.dimension);
+    }
   }
 
   getHorizontalCssOffset(tile: Tile): SafeStyle {
@@ -43,7 +45,12 @@ export class BoardComponent implements OnInit {
   }
 
   restartTheGame(): void {
-    this.board = this.boardService.generateConfiguredBoard(this.dimension);
+    let stateChanged: boolean = false;
+
+    while (this.isBoardHasOrderedState || !stateChanged) {
+      this.board = this.boardService.generateConfiguredBoard(this.dimension);
+      stateChanged = true;
+    }
   }
 
   private isAdjacentCell(tile: Tile): boolean {
@@ -51,5 +58,24 @@ export class BoardComponent implements OnInit {
       (Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
       tile.positionY === this.board.emptyCell.positionY &&
       (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
+  }
+
+
+  get isBoardHasOrderedState(): boolean {
+    if (!this.board) {
+      return true;
+    }
+    let sortedTalesByValue: Tile[] = this.board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
+
+    let isBoardHasOrderedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
+      let rightTile: Tile = array[index + 1];
+      let isTileInTheCorrectOrder: boolean = rightTile ?
+        parseInt(element.positionX + "" + element.positionY) <
+        parseInt(rightTile.positionX + "" + rightTile.positionY)
+        : true;
+
+      return isTileInTheCorrectOrder;
+    });
+    return isBoardHasOrderedState;
   }
 }

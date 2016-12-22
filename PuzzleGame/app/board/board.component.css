@@ -11,6 +11,9 @@
   user-select: none;
 }
 
-button {
-   cursor: pointer;
+button { cursor: pointer; }
+
+.success-message {
+  color: rgb(35, 184, 35);
+  font-size: 20px;
 }
