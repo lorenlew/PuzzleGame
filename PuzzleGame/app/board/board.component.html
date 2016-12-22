@@ -1,0 +1,3 @@
+<div (click) ="moveTileToAnEmptyPlace(tile)"  *ngFor="let tile of tiles" class="tile" [style.top]="getVerticalCssOffset(tile)" [style.left]="getHorizontalCssOffset(tile)">
+  {{tile.value}}
+</div>

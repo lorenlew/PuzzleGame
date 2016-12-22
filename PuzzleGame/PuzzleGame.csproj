@@ -25,6 +25,13 @@
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <Content Include="app\board\board.component.css" />
+    <Content Include="app\board\board.component.html" />
+    <TypeScriptCompile Include="app\board\board.service.ts" />
+    <TypeScriptCompile Include="app\board\board.component.spec.ts" />
+    <TypeScriptCompile Include="app\board\board.component.ts" />
+    <TypeScriptCompile Include="app\board\models\cell.ts" />
+    <TypeScriptCompile Include="app\board\models\tile.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
   </ItemGroup>
