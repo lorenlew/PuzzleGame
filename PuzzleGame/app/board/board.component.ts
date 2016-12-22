@@ -42,8 +42,14 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  private isAdjacentCell(tile: Tile) {
-    return tile.positionX === this.board.emptyCell.positionX &&(Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
-           tile.positionY === this.board.emptyCell.positionY && (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
+  restartTheGame(): void {
+    this.board = this.boardService.generateConfiguredBoard(this.dimension);
+  }
+
+  private isAdjacentCell(tile: Tile): boolean {
+    return tile.positionX === this.board.emptyCell.positionX &&
+      (Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
+      tile.positionY === this.board.emptyCell.positionY &&
+      (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
   }
 }
