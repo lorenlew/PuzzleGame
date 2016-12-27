@@ -1,7 +1,7 @@
 export class Cell {
 
   get flexOrder(): number {
-    return parseInt(this.positionX + "" + this.positionY);
+    return parseInt(`${this.positionX}${this.positionY}`);
   }
 
   constructor(
