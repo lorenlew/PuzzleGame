@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  trigger,
+  style,
+  transition,
+  animate
+  } from '@angular/core';
 
 import { BoardService } from './board.service';
 import { Tile } from './models/tile';
@@ -11,6 +18,16 @@ import { Board } from './models/board';
   selector: 'game-board',
   templateUrl: `board.component.html`,
   styleUrls: ['board.component.css'],
+  animations: [
+    trigger('tileAnimation',
+    [
+      transition(':enter',
+      [
+        style({ transform: 'scale(1.4)' }),
+        animate(300)
+      ])
+    ])
+  ],
   providers: [BoardService]
 })
 export class BoardComponent implements OnInit {
@@ -76,6 +93,6 @@ export class BoardComponent implements OnInit {
 
   private isAdjacentToEmptyCell(tile: Tile): boolean {
     return tile.positionX === this.board.emptyCell.positionX && (Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
-           tile.positionY === this.board.emptyCell.positionY && (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
+      tile.positionY === this.board.emptyCell.positionY && (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
   }
 }
