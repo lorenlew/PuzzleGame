@@ -1,3 +1,19 @@
+#board-game {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.board-container {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px rgb(255, 117, 39) solid;
+}
+
 .tile {
   background-color: rgb(255, 126, 78);
   font-size: 25px;
@@ -9,32 +25,13 @@
   border: 1px rgb(255, 164, 113) solid;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
 }
+
+.tile-value { margin: auto; }
 
 .empty.tile {
   background-color: #ffffff;
   cursor: default;
-}
-
-#board-game {
-  width: 400px;
-  display: block;
-  margin: 0 auto;
-}
-
-.board {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  align-content: stretch;
-}
-
-.board-container {
-  padding-top: 20px;
-  padding-left: 10px;
 }
 
 button { cursor: pointer; }

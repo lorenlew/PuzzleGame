@@ -19,7 +19,7 @@
            (click)="tryMoveTileToAnEmptyCell(tile)"
            [style.order]="tile.flexOrder"
            [style.flex-basis.%]="tileflexBasis">
-        {{tile.value}}
+        <span class="tile-value"> {{tile.value}}</span>
       </div>
       <div class="tile empty"
            [style.order]="board.emptyCell.flexOrder"
