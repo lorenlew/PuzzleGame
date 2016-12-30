@@ -37,11 +37,8 @@ export class BoardService {
   private generateNonPositionedTiles(boardDimension: number): Tile[] {
     let numberOfTilesToCreate: number = boardDimension * boardDimension;
     let tilesValues: number[] = this.generateShuffledTilesValues(numberOfTilesToCreate);
-    let tiles = new Array<Tile>();
-
-    tilesValues.forEach(item => {
-      let newTile = new Tile(0, 0, item);
-      tiles.push(newTile);
+    let tiles: Tile[] = tilesValues.map(item => {
+      return new Tile(0, 0, item);
     });
 
     return tiles;

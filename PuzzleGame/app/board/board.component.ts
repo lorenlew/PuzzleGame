@@ -35,7 +35,6 @@ export class BoardComponent implements OnInit {
   dimension = 4;
   numberOfSteps = 0;
   readonly dimensions = [2, 3, 4, 5];
-  readonly fullPercentSize = 100;
 
   get isBoardHasOrderedState(): boolean {
     if (!this.board) {
@@ -55,7 +54,8 @@ export class BoardComponent implements OnInit {
   }
 
   get tileflexBasis(): number {
-    return this.fullPercentSize / this.dimension;
+    const fullPercentSize = 100;
+    return fullPercentSize / this.dimension;
   }
 
   get boardSideSize(): number {
@@ -92,7 +92,12 @@ export class BoardComponent implements OnInit {
   }
 
   private isAdjacentToEmptyCell(tile: Tile): boolean {
-    return tile.positionX === this.board.emptyCell.positionX && (Math.abs(tile.positionY - this.board.emptyCell.positionY) === 1) ||
-      tile.positionY === this.board.emptyCell.positionY && (Math.abs(tile.positionX - this.board.emptyCell.positionX) === 1);
+    let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
+      const minimalDistanceAlongAxis = 1;
+
+      return (Math.abs(firstCellAxisPosition - secondCellAxisPosition) === minimalDistanceAlongAxis);
+    }
+    return tile.positionX === this.board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, this.board.emptyCell.positionY) ||
+           tile.positionY === this.board.emptyCell.positionY && isDistanceAlongSameAxisMinimal(tile.positionX, this.board.emptyCell.positionX);
   }
 }
