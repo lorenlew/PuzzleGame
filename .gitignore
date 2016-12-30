@@ -65,6 +65,7 @@ npm-debug.log
 
 # VS #
 *.csproj.user
+.vs
 /obj
 /bin
 
