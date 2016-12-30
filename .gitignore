@@ -1,4 +1,4 @@
-# @AngularClass
+﻿# @AngularClass
 
 # Logs
 logs
@@ -63,9 +63,16 @@ npm-debug.log
 .idea/
 *.swp
 
+# VS #
+*.csproj.user
+/obj
+/bin
 
 # Angular #
 *.ngfactory.ts
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+
+/.vs/config
+
