@@ -1,7 +1,7 @@
 import { Cell } from './cell';
 
 export class Tile extends Cell {
-  static readonly tileSideSize = 50;
+  static readonly tileSideSize = 80;
 
   constructor(
     positionX: number,

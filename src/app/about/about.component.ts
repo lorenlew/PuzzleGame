@@ -6,17 +6,12 @@ import { ActivatedRoute } from '@angular/router';
   styles: [`
   `],
   template: `
-    <h1>About</h1>
-    <div>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
-    </div>
+    <h1>Michael Koltasheu</h1>
     <div>
       <h3>
-        patrick@AngularClass.com
+        immerification@gmail.com
       </h3>
     </div>
-    <pre>this.localState = {{ localState | json }}</pre>
   `
 })
 export class AboutComponent {
