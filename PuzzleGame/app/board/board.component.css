@@ -1,0 +1,44 @@
+#board-game {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.board-container {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px rgb(255, 117, 39) solid;
+}
+
+.tile {
+  background-color: rgb(255, 126, 78);
+  font-size: 25px;
+  font-style: italic;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border: 1px rgb(255, 164, 113) solid;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.tile-value { margin: auto; }
+
+.empty.tile {
+  background-color: #ffffff;
+  cursor: default;
+}
+
+button { cursor: pointer; }
+
+.blocked-board { pointer-events: none; }
+
+.success-message {
+  color: rgb(35, 184, 35);
+  font-size: 15px;
+}

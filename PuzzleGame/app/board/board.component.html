@@ -1,0 +1,33 @@
+<div id="board-game">
+  <div id="steps">
+    Number of steps: {{numberOfSteps}}.
+  </div>
+  Select mode:
+  <select [(ngModel)]="dimension" (change)="restartTheGame()">
+    <option *ngFor="let dimension of dimensions">{{dimension}}</option>
+  </select>
+
+  <button (click)="restartTheGame()">Restart the game</button>
+
+  <div class="board-container">
+    <div class="board"
+         [class.blocked-board]="isBoardHasOrderedState"
+         [style.width.px]="boardSideSize"
+         [style.height.px]="boardSideSize">
+      <div class="tile"
+           *ngFor="let tile of board.randomlyPositionedTiles"
+           (click)="tryMoveTileToAnEmptyCell(tile)"
+           [style.order]="tile.flexOrder"
+           [style.flex-basis.%]="tileflexBasis">
+        <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>
+      </div>
+      <div class="tile empty"
+           [style.order]="board.emptyCell.flexOrder"
+           [style.flex-basis.%]="tileflexBasis">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isBoardHasOrderedState">
+    <span class="success-message">Puzzle solved!</span>
+  </div></div>
