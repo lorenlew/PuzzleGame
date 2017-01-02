@@ -42,6 +42,8 @@
     <Content Include="config\webpack.test.js" />
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
+    <Content Include="src\app\board\board.component.css" />
+    <Content Include="src\app\board\board.component.html" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\home\home.component.css" />
     <Content Include="src\app\home\home.component.html" />
@@ -83,8 +85,12 @@
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\+detail\detail.component.ts" />
-    <TypeScriptCompile Include="src\app\+detail\index.ts" />
+    <TypeScriptCompile Include="src\app\board\board.component.ts" />
+    <TypeScriptCompile Include="src\app\board\board.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\board\board.service.ts" />
+    <TypeScriptCompile Include="src\app\board\models\board.ts" />
+    <TypeScriptCompile Include="src\app\board\models\cell.ts" />
+    <TypeScriptCompile Include="src\app\board\models\tile.ts" />
     <TypeScriptCompile Include="src\app\about\about.component.spec.ts" />
     <TypeScriptCompile Include="src\app\about\about.component.ts" />
     <TypeScriptCompile Include="src\app\about\index.ts" />
@@ -124,7 +130,6 @@
     <Content Include=".editorconfig" />
     <Content Include=".nvmrc" />
     <Content Include=".travis.yml" />
-    <Content Include="debug.log" />
     <Content Include="Dockerfile" />
     <Content Include="LICENSE" />
     <Content Include="netlify.toml" />

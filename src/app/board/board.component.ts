@@ -14,9 +14,8 @@ import { Board } from './models/board';
 
 
 @Component({
-  moduleId: module.id,
   selector: 'game-board',
-  templateUrl: `board.component.html`,
+  templateUrl: 'board.component.html',
   styleUrls: ['board.component.css'],
   animations: [
     trigger('tileAnimation',
