@@ -8,7 +8,7 @@
     "typescript"
   ],
   "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "homepage": "https://github.com/lorenlew/PuzzleGame",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && npm run ngc -- --webpack config/webpack.prod.js && webpack --config config/webpack.prod.js  --progress --profile --bail",
@@ -147,10 +147,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/lorenlew/PuzzleGame.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/lorenlew/PuzzleGame/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
