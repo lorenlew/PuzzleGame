@@ -11,7 +11,7 @@
 
   <div class="board-container">
     <div class="board"
-         [class.blocked-board]="isBoardHasOrderedState"
+         [class.blocked-board]="isBoardHasSolvedState"
          [style.width.px]="boardSideSize"
          [style.height.px]="boardSideSize">
       <div class="tile"
@@ -28,6 +28,6 @@
     </div>
   </div>
 
-  <div *ngIf="isBoardHasOrderedState">
+  <div *ngIf="isBoardHasSolvedState">
     <span class="success-message">Puzzle solved!</span>
   </div></div>

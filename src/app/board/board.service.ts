@@ -13,6 +13,21 @@ export class BoardService {
     return configuredBoard;
   }
 
+  isBoardHasSolvedState(board: Board): boolean {
+    let sortedTalesByValue: Tile[] = board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
+
+    let isBoardHasSolvedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
+      let rightTile: Tile = array[index + 1];
+      let isTileInTheCorrectOrder: boolean = rightTile
+        ? element.flexOrder < rightTile.flexOrder
+        : true;
+
+      return isTileInTheCorrectOrder;
+    });
+
+    return isBoardHasSolvedState;
+  }
+
   private getRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
     let tiles: Tile[] = Array.from(nonPositionedTiles);
     let tilesNumber: number = tiles.length;

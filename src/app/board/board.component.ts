@@ -35,21 +35,12 @@ export class BoardComponent implements OnInit {
   numberOfSteps = 0;
   readonly dimensions = [2, 3, 4, 5];
 
-  get isBoardHasOrderedState(): boolean {
+  get isBoardHasSolvedState(): boolean {
     if (!this.board) {
       return true;
     }
-    let sortedTalesByValue: Tile[] = this.board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
 
-    let isBoardHasOrderedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
-      let rightTile: Tile = array[index + 1];
-      let isTileInTheCorrectOrder: boolean = rightTile
-        ? element.flexOrder < rightTile.flexOrder
-        : true;
-
-      return isTileInTheCorrectOrder;
-    });
-    return isBoardHasOrderedState;
+    return this.boardService.isBoardHasSolvedState(this.board);
   }
 
   get tileflexBasis(): number {
@@ -65,7 +56,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    while (this.isBoardHasOrderedState) {
+    while (this.isBoardHasSolvedState) {
       this.board = this.boardService.generateConfiguredBoard(this.dimension);
     }
   }
@@ -83,7 +74,7 @@ export class BoardComponent implements OnInit {
   restartTheGame(): void {
     let stateChanged = false;
 
-    while (this.isBoardHasOrderedState || !stateChanged) {
+    while (this.isBoardHasSolvedState || !stateChanged) {
       this.board = this.boardService.generateConfiguredBoard(this.dimension);
       stateChanged = true;
     }
