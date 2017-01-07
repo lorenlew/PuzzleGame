@@ -16,29 +16,25 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./board'] ">
-          Game
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
+    <div id="main-container">
+        <nav>
+          <span>
+            <a [routerLink]=" ['./home'] ">
+              Home
+            </a>
+          </span>
+          |
+          <span>
+            <a [routerLink]=" ['./about'] ">
+              About
+            </a>
+          </span>
+        </nav>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+    </div>
   `
 })
 export class AppComponent {

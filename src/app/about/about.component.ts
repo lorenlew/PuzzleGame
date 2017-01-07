@@ -6,12 +6,21 @@ import { ActivatedRoute } from '@angular/router';
   styles: [`
   `],
   template: `
-    <h1>Michael Koltasheu</h1>
+    <h2>Developer: Michael Koltasheu</h2>
     <div>
+      <h2>Belarus, Minsk</h2>
       <h3>
         immerification@gmail.com
       </h3>
     </div>
+  <span>
+    <a [routerLink]=" ['./board'] ">
+      Play Game
+    </a>
+  </span>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
   `
 })
 export class AboutComponent {

@@ -6,3 +6,8 @@ html, body{
 span.active {
   background-color: gray;
 }
+
+#main-container {
+  width: 400px;
+  margin: 0 auto;
+}

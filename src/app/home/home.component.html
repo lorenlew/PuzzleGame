@@ -1,5 +1,5 @@
-﻿<div class="card-container">
-  <h1 x-large class="sample-content">15 puzzle game</h1>
+﻿
+  <h1 x-large class="sample-content">Puzzle game</h1>
 
   <p>
     The 15-puzzle (also called Gem Puzzle, Boss Puzzle, Game of Fifteen, Mystic Square and many others)
@@ -9,4 +9,11 @@
     respectively, for the number of tiles and the number of spaces. The object of the puzzle is to place the tiles in
     order by making sliding moves that use the empty space.
   </p>
-</div>
+  <span>
+    <a [routerLink]=" ['./board'] ">
+      Play Game
+    </a>
+  </span>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
