@@ -4,7 +4,7 @@
   </div>
   Select mode:
   <select [(ngModel)]="dimension" (change)="restartTheGame()">
-    <option *ngFor="let dimension of dimensions">{{dimension}}</option>
+    <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>
   </select>
 
   <button (click)="restartTheGame()">Restart the game</button>

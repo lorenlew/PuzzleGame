@@ -31,9 +31,9 @@ import { Board } from './models/board';
 })
 export class BoardComponent implements OnInit {
   board: Board;
-  dimension = 4;
+  dimension = 3;
   numberOfSteps = 0;
-  readonly dimensions = [2, 3, 4, 5];
+  readonly dimensions = [2, 3, 4];
 
   get isBoardHasSolvedState(): boolean {
     if (!this.board) {
@@ -73,7 +73,6 @@ export class BoardComponent implements OnInit {
 
   restartTheGame(): void {
     let stateChanged = false;
-
     while (this.isBoardHasSolvedState || !stateChanged) {
       this.board = this.boardService.generateConfiguredBoard(this.dimension);
       stateChanged = true;

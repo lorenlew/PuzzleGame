@@ -7,13 +7,18 @@ import { Board } from './models/board';
 export class BoardService {
 
   generateConfiguredBoard(boardDimension: number): Board {
-    let nonPositionedTiles: Tile[] = this.generateNonPositionedTiles(boardDimension);
-    let configuredBoard: Board = this.getRandomizedTiles(nonPositionedTiles, boardDimension);
+    let nonPositionedTiles: Tile[] = this.generateNonPositionedTilesWithShuffledValues(boardDimension);
+    let configuredBoard: Board = this.getBoardWithRandomizedTiles(nonPositionedTiles, boardDimension);
 
     return configuredBoard;
   }
 
   isBoardHasSolvedState(board: Board): boolean {
+    let emptyCellHasLastPosition = board.emptyCell.positionX === board.emptyCell.positionY && board.emptyCell.positionY === board.dimension;
+    if (!emptyCellHasLastPosition) {
+      return false;
+    }
+
     let sortedTalesByValue: Tile[] = board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
 
     let isBoardHasSolvedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
@@ -28,7 +33,7 @@ export class BoardService {
     return isBoardHasSolvedState;
   }
 
-  private getRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
+  private getBoardWithRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
     let tiles: Tile[] = Array.from(nonPositionedTiles);
     let tilesNumber: number = tiles.length;
     let tileIndex = 0;
@@ -46,10 +51,10 @@ export class BoardService {
       }
     }
 
-    return new Board(tiles.filter(item => item.value !== tileToRemove.value), tileToRemove);
+    return new Board(boardDimension, tiles.filter(item => item.value !== tileToRemove.value), tileToRemove);
   }
 
-  private generateNonPositionedTiles(boardDimension: number): Tile[] {
+  private generateNonPositionedTilesWithShuffledValues(boardDimension: number): Tile[] {
     let numberOfTilesToCreate: number = boardDimension * boardDimension;
     let tilesValues: number[] = this.generateShuffledTilesValues(numberOfTilesToCreate);
     let tiles: Tile[] = tilesValues.map(item => {
