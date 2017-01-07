@@ -15,13 +15,13 @@
       <div class="tile"
            *ngFor="let tile of board.randomlyPositionedTiles"
            (click)="tryMoveTileToAnEmptyCell(tile)"
-           [style.order]="tile.flexOrder"
+           [style.order]="getCellPositionNumber(tile)"
            [style.flex-basis.%]="tileflexBasis"
            [class.correct-tile-position]="isTileOnTheCorrectPlace(tile)">
         <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>
       </div>
       <div class="tile empty"
-           [style.order]="board.emptyCell.flexOrder"
+           [style.order]="getCellPositionNumber(board.emptyCell)"
            [style.flex-basis.%]="tileflexBasis">
       </div>
     </div>

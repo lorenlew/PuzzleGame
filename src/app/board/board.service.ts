@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Tile } from './models/tile';
+import { Cell } from './models/cell';
 import { Board } from './models/board';
 
 @Injectable()
@@ -14,30 +15,22 @@ export class BoardService {
   }
 
   isBoardHasSolvedState(board: Board): boolean {
-    let emptyCellHasLastPosition = board.emptyCell.positionX === board.emptyCell.positionY && board.emptyCell.positionY === board.dimension;
-    if (!emptyCellHasLastPosition) {
-      return false;
-    }
-
-    let sortedTalesByValue: Tile[] = board.randomlyPositionedTiles.sort((n1, n2) => n1.value - n2.value);
-
-    let isBoardHasSolvedState: boolean = sortedTalesByValue.every((element: Tile, index: number, array: Tile[]) => {
-      let rightTile: Tile = array[index + 1];
-      let isTileInTheCorrectOrder: boolean = rightTile
-        ? element.flexOrder < rightTile.flexOrder
-        : true;
-
-      return isTileInTheCorrectOrder;
+    let isBoardHasSolvedState: boolean = board.randomlyPositionedTiles.every((tile: Tile) => {
+      return this.isTileOnTheCorrectPlace(tile, board.dimension);
     });
 
     return isBoardHasSolvedState;
   }
 
   isTileOnTheCorrectPlace(tile: Tile, boardDimension: number): boolean {
-    return ((tile.positionX - 1) * boardDimension + tile.positionY) === tile.value;
+    return this.getCellPositionNumber(tile, boardDimension)=== tile.value;
   }
 
-  public isMovingTileAdjacentToEmptyCell(board: Board, tile: Tile): boolean {
+  getCellPositionNumber(tile: Cell, boardDimension: number): number {
+    return (tile.positionX - 1) * boardDimension + tile.positionY;
+  }
+
+  isMovingTileAdjacentToEmptyCell(board: Board, tile: Tile): boolean {
     let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
       const minimalDistanceAlongAxis = 1;
 
