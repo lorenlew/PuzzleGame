@@ -139,7 +139,6 @@
     <Content Include="tsconfig.webpack.json" />
     <Content Include="tslint.json" />
     <Content Include="typedoc.json" />
-    <Content Include="yarn.lock" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
