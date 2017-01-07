@@ -27,18 +27,25 @@
   display: flex;
 }
 
-.tile-value { margin: auto; }
+.tile-value {
+  margin: auto;
+}
 
 .empty.tile {
   background-color: #ffffff;
   cursor: default;
 }
 
-button { cursor: pointer; }
+.correct-tile-position {
+  background-color: rgb(112, 218, 9);
+}
 
-.blocked-board { pointer-events: none; }
+button {
+  cursor: pointer;
+}
 
-.success-message {
-  color: rgb(35, 184, 35);
-  font-size: 15px;
+.solved-board {
+  pointer-events: none;
+  opacity: 0.7;
+  border: 2px rgb(112, 218, 9) solid;
 }

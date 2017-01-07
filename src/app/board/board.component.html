@@ -6,19 +6,18 @@
   <select [(ngModel)]="dimension" (change)="restartTheGame()">
     <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>
   </select>
-
   <button (click)="restartTheGame()">Restart the game</button>
-
   <div class="board-container">
     <div class="board"
-         [class.blocked-board]="isBoardHasSolvedState"
+         [class.solved-board]="isBoardHasSolvedState"
          [style.width.px]="boardSideSize"
          [style.height.px]="boardSideSize">
       <div class="tile"
            *ngFor="let tile of board.randomlyPositionedTiles"
            (click)="tryMoveTileToAnEmptyCell(tile)"
            [style.order]="tile.flexOrder"
-           [style.flex-basis.%]="tileflexBasis">
+           [style.flex-basis.%]="tileflexBasis"
+           [class.correct-tile-position]="isTileOnTheCorrectPlace(tile)">
         <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>
       </div>
       <div class="tile empty"
@@ -27,7 +26,4 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="isBoardHasSolvedState">
-    <span class="success-message">Puzzle solved!</span>
-  </div></div>
+</div>

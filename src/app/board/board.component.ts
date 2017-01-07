@@ -61,6 +61,10 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  isTileOnTheCorrectPlace(tile: Tile): boolean {
+    return this.boardService.isTileOnTheCorrectPlace(tile, this.board.dimension);
+  }
+
   tryMoveTileToAnEmptyCell(tile: Tile): void {
     if (this.boardService.isMovingTileAdjacentToEmptyCell(this.board, tile)) {
       let newEmptyCell = new Cell(tile.positionX, tile.positionY);

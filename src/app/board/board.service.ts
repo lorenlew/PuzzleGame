@@ -33,6 +33,10 @@ export class BoardService {
     return isBoardHasSolvedState;
   }
 
+  isTileOnTheCorrectPlace(tile: Tile, boardDimension: number): boolean {
+    return ((tile.positionX - 1) * boardDimension + tile.positionY) === tile.value;
+  }
+
   public isMovingTileAdjacentToEmptyCell(board: Board, tile: Tile): boolean {
     let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
       const minimalDistanceAlongAxis = 1;
