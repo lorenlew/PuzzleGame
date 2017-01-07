@@ -13,11 +13,9 @@ import { ActivatedRoute } from '@angular/router';
         immerification@gmail.com
       </h3>
     </div>
-  <span>
-    <a [routerLink]=" ['./board'] ">
+    <a md-raised-button [routerLink]=" ['./board'] ">
       Play Game
     </a>
-  </span>
   <main>
     <router-outlet></router-outlet>
   </main>

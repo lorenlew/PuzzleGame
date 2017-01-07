@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { MaterialModule } from '@angular/material/module';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -49,7 +50,8 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    MaterialModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -2,7 +2,6 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
 import { AppState } from './app.service';
 
 /*
@@ -18,19 +17,13 @@ import { AppState } from './app.service';
   template: `
     <div id="main-container">
         <nav>
-          <span>
-            <a [routerLink]=" ['./home'] ">
+            <a md-raised-button [routerLink]=" ['./home'] ">
               Home
             </a>
-          </span>
-          |
-          <span>
-            <a [routerLink]=" ['./about'] ">
+            <a md-raised-button [routerLink]=" ['./about'] ">
               About
             </a>
-          </span>
         </nav>
-
         <main>
           <router-outlet></router-outlet>
         </main>

@@ -1,5 +1,5 @@
 {
-  "name": "angular2-webpack-starter",
+  "name": "puzzle game",
   "version": "5.1.1",
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "keywords": [
@@ -74,6 +74,7 @@
     "@angular/core": "~2.4.1",
     "@angular/forms": "~2.4.1",
     "@angular/http": "~2.4.1",
+    "@angular/material": "^2.0.0-beta.1",
     "@angular/platform-browser": "~2.4.1",
     "@angular/platform-browser-dynamic": "~2.4.1",
     "@angular/platform-server": "~2.4.1",
@@ -139,7 +140,7 @@
     "typescript": "2.0.10",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
-    "webpack": "2.2.0-rc.2",
+    "webpack": "2.2.0-rc.3",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "2.2.0-rc.0",
     "webpack-md5-hash": "^0.0.5",

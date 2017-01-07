@@ -6,7 +6,10 @@
   <select [(ngModel)]="dimension" (change)="restartTheGame()">
     <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>
   </select>
-  <button (click)="restartTheGame()">Restart the game</button>
+  <button (click)="restartTheGame()" md-mini-fab>
+    <md-icon class="md-15">replay</md-icon>
+  </button>
+
   <div class="board-container">
     <div class="board"
          [class.solved-board]="isBoardHasSolvedState"
