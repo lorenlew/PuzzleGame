@@ -33,6 +33,16 @@ export class BoardService {
     return isBoardHasSolvedState;
   }
 
+  public isMovingTileAdjacentToEmptyCell(board: Board, tile: Tile): boolean {
+    let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
+      const minimalDistanceAlongAxis = 1;
+
+      return (Math.abs(firstCellAxisPosition - secondCellAxisPosition) === minimalDistanceAlongAxis);
+    }
+    return tile.positionX === board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, board.emptyCell.positionY) ||
+      tile.positionY === board.emptyCell.positionY && isDistanceAlongSameAxisMinimal(tile.positionX, board.emptyCell.positionX);
+  }
+
   private getBoardWithRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
     let tiles: Tile[] = Array.from(nonPositionedTiles);
     let tilesNumber: number = tiles.length;

@@ -62,7 +62,7 @@ export class BoardComponent implements OnInit {
   }
 
   tryMoveTileToAnEmptyCell(tile: Tile): void {
-    if (this.isAdjacentToEmptyCell(tile)) {
+    if (this.boardService.isMovingTileAdjacentToEmptyCell(this.board, tile)) {
       let newEmptyCell = new Cell(tile.positionX, tile.positionY);
       tile.positionX = this.board.emptyCell.positionX;
       tile.positionY = this.board.emptyCell.positionY;
@@ -78,15 +78,5 @@ export class BoardComponent implements OnInit {
       stateChanged = true;
     }
     this.numberOfSteps = 0;
-  }
-
-  private isAdjacentToEmptyCell(tile: Tile): boolean {
-    let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
-      const minimalDistanceAlongAxis = 1;
-
-      return (Math.abs(firstCellAxisPosition - secondCellAxisPosition) === minimalDistanceAlongAxis);
-    }
-    return tile.positionX === this.board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, this.board.emptyCell.positionY) ||
-           tile.positionY === this.board.emptyCell.positionY && isDistanceAlongSameAxisMinimal(tile.positionX, this.board.emptyCell.positionX);
   }
 }
