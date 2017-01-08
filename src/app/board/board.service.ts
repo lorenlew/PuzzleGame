@@ -11,6 +11,10 @@ export class BoardService {
     let nonPositionedTiles: Tile[] = this.generateNonPositionedTilesWithShuffledValues(boardDimension);
     let configuredBoard: Board = this.getBoardWithRandomizedTiles(nonPositionedTiles, boardDimension);
 
+    if (this.isBoardHasSolvedState(configuredBoard)) {
+      return this.generateConfiguredBoard(boardDimension);
+    }
+
     return configuredBoard;
   }
 

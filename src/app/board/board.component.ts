@@ -5,7 +5,7 @@ import {
   style,
   transition,
   animate
-  } from '@angular/core';
+} from '@angular/core';
 
 import { BoardService } from './board.service';
 import { Tile } from './models/tile';
@@ -19,13 +19,13 @@ import { Board } from './models/board';
   styleUrls: ['board.component.css'],
   animations: [
     trigger('tileAnimation',
-    [
-      transition(':enter',
       [
-        style({ transform: 'scale(1.4)' }),
-        animate(300)
+        transition(':enter',
+          [
+            style({ transform: 'scale(1.4)' }),
+            animate(300)
+          ])
       ])
-    ])
   ],
   providers: [BoardService]
 })
@@ -56,9 +56,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    while (this.isBoardHasSolvedState) {
-      this.board = this.boardService.generateConfiguredBoard(this.dimension);
-    }
+    this.board = this.boardService.generateConfiguredBoard(this.dimension);
   }
 
   isTileOnTheCorrectPlace(tile: Tile): boolean {
@@ -80,11 +78,7 @@ export class BoardComponent implements OnInit {
   }
 
   restartTheGame(): void {
-    let stateChanged = false;
-    while (this.isBoardHasSolvedState || !stateChanged) {
-      this.board = this.boardService.generateConfiguredBoard(this.dimension);
-      stateChanged = true;
-    }
+    this.board = this.boardService.generateConfiguredBoard(this.dimension);
     this.numberOfSteps = 0;
   }
 }
