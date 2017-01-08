@@ -1,11 +1,5 @@
-#board-game {
-  width: 400px;
-  margin: 0 auto;
-}
-
 .board-container {
   padding-top: 20px;
-  padding-left: 10px;
 }
 
 .board {
