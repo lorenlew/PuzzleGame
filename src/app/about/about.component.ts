@@ -13,12 +13,6 @@ import { ActivatedRoute } from '@angular/router';
         immerification@gmail.com
       </h3>
     </div>
-    <a md-raised-button [routerLink]=" ['./board'] ">
-      Play Game
-    </a>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
   `
 })
 export class AboutComponent {

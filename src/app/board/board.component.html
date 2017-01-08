@@ -1,7 +1,7 @@
 <div id="board-game">
-  <div id="steps">
+  <p id="steps">
     Number of steps: {{numberOfSteps}}.
-  </div>
+  </p>
   Select mode:
   <select [(ngModel)]="dimension" (change)="restartTheGame()">
     <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>

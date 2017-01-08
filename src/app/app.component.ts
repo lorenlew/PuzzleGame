@@ -17,10 +17,10 @@ import { AppState } from './app.service';
   template: `
     <div id="main-container">
         <nav>
-            <a md-raised-button [routerLink]=" ['./home'] ">
+            <a md-raised-button [routerLink]="['./']">
               Home
             </a>
-            <a md-raised-button [routerLink]=" ['./about'] ">
+            <a md-raised-button [routerLink]="['./about']">
               About
             </a>
         </nav>
