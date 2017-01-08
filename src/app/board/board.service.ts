@@ -11,7 +11,7 @@ export class BoardService {
     let nonPositionedTiles: Tile[] = this.generateNonPositionedTilesWithShuffledValues(boardDimension);
     let configuredBoard: Board = this.getBoardWithRandomizedTiles(nonPositionedTiles, boardDimension);
 
-    if (this.isBoardHasSolvedState(configuredBoard)) {
+    if (!this.isPossibleToSolveBoard(configuredBoard) || this.isBoardHasSolvedState(configuredBoard)) {
       return this.generateConfiguredBoard(boardDimension);
     }
 
@@ -27,7 +27,7 @@ export class BoardService {
   }
 
   isTileOnTheCorrectPlace(tile: Tile, boardDimension: number): boolean {
-    return this.getCellPositionNumber(tile, boardDimension)=== tile.value;
+    return this.getCellPositionNumber(tile, boardDimension) === tile.value;
   }
 
   getCellPositionNumber(tile: Cell, boardDimension: number): number {
@@ -42,6 +42,25 @@ export class BoardService {
     }
     return tile.positionX === board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, board.emptyCell.positionY) ||
       tile.positionY === board.emptyCell.positionY && isDistanceAlongSameAxisMinimal(tile.positionX, board.emptyCell.positionX);
+  }
+
+  private isPossibleToSolveBoard(board: Board): boolean {
+    let numberOfTilesToTheRightWhichAreLessThanEachSingleTile: number = 0;
+
+    board.randomlyPositionedTiles.forEach((currentTile: Tile, index: number, tiles: Tile[]) => {
+      let currentTilePositionNumber: number = this.getCellPositionNumber(currentTile, board.dimension);
+
+      let numberOfTilesToTheRightWhichAreLessThanCurrentTile: number = tiles.filter((tileToCompare: Tile) => {
+        let tileToComparePositionNumber: number = this.getCellPositionNumber(tileToCompare, board.dimension);
+
+        return tileToComparePositionNumber > currentTilePositionNumber && tileToCompare.value < currentTile.value;
+      }).length;
+      numberOfTilesToTheRightWhichAreLessThanEachSingleTile += numberOfTilesToTheRightWhichAreLessThanCurrentTile;
+    });
+
+    let isPossibleToSolveBoard: boolean = (numberOfTilesToTheRightWhichAreLessThanEachSingleTile + board.emptyCell.positionX) % 2 === 0;
+
+    return isPossibleToSolveBoard;
   }
 
   private getBoardWithRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
