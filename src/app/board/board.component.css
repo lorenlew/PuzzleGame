@@ -6,6 +6,8 @@
   display: flex;
   flex-wrap: wrap;
   border: 2px rgb(255, 117, 39) solid;
+  width: 300px;
+  height: 300px;
 }
 
 .tile {

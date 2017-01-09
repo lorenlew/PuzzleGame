@@ -12,9 +12,7 @@
 
 <div class="board-container">
   <div class="board"
-       [class.solved-board]="isBoardHasSolvedState"
-       [style.width.px]="boardSideSize"
-       [style.height.px]="boardSideSize">
+       [class.solved-board]="isBoardHasSolvedState">
     <div class="tile"
          *ngFor="let tile of board.randomlyPositionedTiles"
          (click)="tryMoveTileToAnEmptyCell(tile)"

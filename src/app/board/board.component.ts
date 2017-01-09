@@ -33,7 +33,7 @@ export class BoardComponent implements OnInit {
   board: Board;
   dimension = 3;
   numberOfSteps = 0;
-  readonly dimensions = [2, 3, 4];
+  readonly dimensions = [3, 4, 5];
 
   get isBoardHasSolvedState(): boolean {
     if (!this.board) {
@@ -46,10 +46,6 @@ export class BoardComponent implements OnInit {
   get tileflexBasis(): number {
     const fullPercentSize = 100;
     return fullPercentSize / this.dimension;
-  }
-
-  get boardSideSize(): number {
-    return this.dimension * Tile.tileSideSize;
   }
 
   constructor(private boardService: BoardService) {
