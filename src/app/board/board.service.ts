@@ -45,7 +45,7 @@ export class BoardService {
   }
 
   private isPossibleToSolveBoard(board: Board): boolean {
-    let numberOfTilesToTheRightWhichAreLessThanEachSingleTile: number = 0;
+    let totalNumberOfInversions: number = 0;
 
     board.randomlyPositionedTiles.forEach((currentTile: Tile, index: number, tiles: Tile[]) => {
       let currentTilePositionNumber: number = this.getCellPositionNumber(currentTile, board.dimension);
@@ -55,12 +55,22 @@ export class BoardService {
 
         return tileToComparePositionNumber > currentTilePositionNumber && tileToCompare.value < currentTile.value;
       }).length;
-      numberOfTilesToTheRightWhichAreLessThanEachSingleTile += numberOfTilesToTheRightWhichAreLessThanCurrentTile;
+      totalNumberOfInversions += numberOfTilesToTheRightWhichAreLessThanCurrentTile;
     });
 
-    let isPossibleToSolveBoard: boolean = (numberOfTilesToTheRightWhichAreLessThanEachSingleTile + board.emptyCell.positionX) % 2 === 0;
+    let isBoardSolvable: boolean;
+    let isBoardDimesionEven: boolean = board.dimension % 2 === 0;
+    let isTotalNumberOfInversionsEven: boolean = totalNumberOfInversions % 2 === 0;
+    let isEmptyCellOnTheEvenRowCountingFromTheBottom = (board.dimension - board.emptyCell.positionX + 1) % 2 === 0;
 
-    return isPossibleToSolveBoard;
+    if (isBoardDimesionEven) {
+      isBoardSolvable = (isEmptyCellOnTheEvenRowCountingFromTheBottom && !isTotalNumberOfInversionsEven) ||
+        (!isEmptyCellOnTheEvenRowCountingFromTheBottom && isTotalNumberOfInversionsEven);
+    } else {
+      isBoardSolvable = isTotalNumberOfInversionsEven;
+    }
+
+    return isBoardSolvable;
   }
 
   private getBoardWithRandomizedTiles(nonPositionedTiles: Tile[], boardDimension: number): Board {
