@@ -18,7 +18,6 @@ export class Board {
         targetPositionX = ((tile.value - targetPositionY) / this.dimension) + 1;
       }
       let manhattanDistanceForTile = Math.abs(tile.positionX - targetPositionX) + Math.abs(tile.positionY - targetPositionY);
-      tile.md = manhattanDistanceForTile;
       distanceSum += manhattanDistanceForTile;
     });
 
