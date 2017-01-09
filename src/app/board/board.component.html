@@ -1,9 +1,11 @@
-<p id="steps">
-  Number of steps: {{numberOfSteps}}.
+
+  <p> Number of steps: {{numberOfSteps}}.</p>
+  <p> Manhattan distance: {{board.manhattanDistance}}.</p>
+
   <button (click)="restartTheGame()" md-mini-fab>
     <md-icon>replay</md-icon>
   </button>
-</p>
+
 
   Select mode:
 <select [(ngModel)]="dimension" (change)="restartTheGame()">
