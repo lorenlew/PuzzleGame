@@ -10,10 +10,16 @@ span.active {
 #main-container {
   width: 450px;
   margin: 0 auto;
+  background-color: rgba(124, 252, 0, 0.05);
 }
 
 @media(max-width: 400px) {
   #main-container {
     width: 300px;
   }
+}
+
+nav {
+  width: 300px;
+  margin: 0 auto;
 }

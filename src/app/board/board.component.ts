@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 
 import { BoardService } from './board.service';
+import { GifService } from './gif.service';
 import { Tile } from './models/tile';
 import { Cell } from './models/cell';
 import { Board } from './models/board';
-
 
 @Component({
   selector: 'game-board',
@@ -27,20 +27,28 @@ import { Board } from './models/board';
           ])
       ])
   ],
-  providers: [BoardService]
+  providers: [BoardService, GifService]
 })
 export class BoardComponent implements OnInit {
   board: Board;
   dimension = 3;
-  numberOfSteps = 0;
   readonly dimensions = [3, 4, 5];
+
+  numberOfSteps = 0;
+  encouragementImageUrl: string;
+  encouragementShown: boolean;
 
   get isBoardHasSolvedState(): boolean {
     if (!this.board) {
       return true;
     }
 
-    return this.boardService.isBoardHasSolvedState(this.board);
+    let isBoardHasSolvedState: boolean = this.boardService.isBoardHasSolvedState(this.board);
+    if (isBoardHasSolvedState && !this.encouragementShown) {
+      this.showEncouragement();
+      this.encouragementShown = true;
+    }
+    return isBoardHasSolvedState;
   }
 
   get tileflexBasis(): number {
@@ -48,7 +56,7 @@ export class BoardComponent implements OnInit {
     return fullPercentSize / this.dimension;
   }
 
-  constructor(private boardService: BoardService) {
+  constructor(private boardService: BoardService, private gifService: GifService) {
   }
 
   ngOnInit(): void {
@@ -76,5 +84,15 @@ export class BoardComponent implements OnInit {
   restartTheGame(): void {
     this.board = this.boardService.generateConfiguredBoard(this.dimension);
     this.numberOfSteps = 0;
+    this.encouragementShown = false;
+    this.encouragementImageUrl = null;
+  }
+
+  showEncouragement(): void {
+    this.gifService.generateRandomGif()
+      .subscribe(
+      imageUrl => {
+        this.encouragementImageUrl = imageUrl;
+      });
   }
 }

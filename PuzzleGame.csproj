@@ -87,9 +87,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\board\board.component.ts" />
     <TypeScriptCompile Include="src\app\board\board.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\board\gif.service.ts" />
     <TypeScriptCompile Include="src\app\board\board.service.ts" />
     <TypeScriptCompile Include="src\app\board\models\board.ts" />
     <TypeScriptCompile Include="src\app\board\models\cell.ts" />
+    <TypeScriptCompile Include="src\app\board\models\GiphyResponse.d.ts" />
     <TypeScriptCompile Include="src\app\board\models\tile.ts" />
     <TypeScriptCompile Include="src\app\about\about.component.spec.ts" />
     <TypeScriptCompile Include="src\app\about\about.component.ts" />

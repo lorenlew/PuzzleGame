@@ -1,32 +1,36 @@
-
+<div class="game-container">
   <p> Number of steps: {{numberOfSteps}}.</p>
   <p> Manhattan distance: {{board.manhattanDistance}}.</p>
 
-  <button (click)="restartTheGame()" md-mini-fab>
-    <md-icon>replay</md-icon>
-  </button>
-
 
   Select mode:
-<select [(ngModel)]="dimension" (change)="restartTheGame()">
-  <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>
-</select>
+  <select [(ngModel)]="dimension" (change)="restartTheGame()">
+    <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>
+  </select>
 
-<div class="board-container">
-  <div class="board"
-       [class.solved-board]="isBoardHasSolvedState">
-    <div class="tile"
-         *ngFor="let tile of board.randomlyPositionedTiles"
-         (click)="tryMoveTileToAnEmptyCell(tile)"
-         [style.order]="getCellPositionNumber(tile)"
-         [style.flex-basis.%]="tileflexBasis"
-         [class.correct-tile-position]="isTileOnTheCorrectPlace(tile)">
-      <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>
-    </div>
-    <div class="tile empty"
-         [style.order]="getCellPositionNumber(board.emptyCell)"
-         [style.flex-basis.%]="tileflexBasis">
+  <span (click)="restartTheGame()" md-mini-fab>
+    <md-icon>replay</md-icon>
+  </span>
+
+  <div *ngIf="encouragementImageUrl" class="encouragement-content">
+    <img [src]="encouragementImageUrl" />
+  </div>
+
+  <div class="board-container">
+    <div class="board"
+         [class.solved-board]="isBoardHasSolvedState">
+      <div class="tile"
+           *ngFor="let tile of board.randomlyPositionedTiles"
+           (click)="tryMoveTileToAnEmptyCell(tile)"
+           [style.order]="getCellPositionNumber(tile)"
+           [style.flex-basis.%]="tileflexBasis"
+           [class.correct-tile-position]="isTileOnTheCorrectPlace(tile)">
+        <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>
+      </div>
+      <div class="tile empty"
+           [style.order]="getCellPositionNumber(board.emptyCell)"
+           [style.flex-basis.%]="tileflexBasis">
+      </div>
     </div>
   </div>
 </div>
-
