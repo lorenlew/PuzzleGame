@@ -15,8 +15,6 @@ span.active {
   width: 450px;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
 }
 
 .inner-wrapper {
@@ -25,7 +23,7 @@ span.active {
 
 @media(max-width: 350px) {
   #main-container {
-    width: 350px;
+    width: 300px;
     background: inherit;
   }
 }
