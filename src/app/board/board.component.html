@@ -24,6 +24,7 @@
            *ngFor="let tile of board.randomlyPositionedTiles"
            (click)="tryMoveTileToAnEmptyCell(tile)"
            [style.order]="getCellPositionNumber(tile)"
+           [class.isMoving] ="tile.isMoving"
            [style.flex-basis.%]="tileflexBasis"
            [class.correct-tile-position]="isTileOnTheCorrectPlace(tile)">
         <span [@tileAnimation] class="tile-value"> {{tile.value}}</span>

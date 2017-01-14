@@ -38,7 +38,10 @@
 .tile-value {
   margin: auto;
 }
+.isMoving {
+  opacity: 0.8;
 
+}
 .empty.tile {
   background-color: inherit;
 }
