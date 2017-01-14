@@ -86,6 +86,7 @@ export class BoardComponent implements OnInit {
     this.numberOfSteps = 0;
     this.encouragementShown = false;
     this.encouragementImageUrl = null;
+    this.showEncouragement();
   }
 
   showEncouragement(): void {
