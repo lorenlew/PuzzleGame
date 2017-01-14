@@ -6,12 +6,18 @@ import { ActivatedRoute } from '@angular/router';
   styles: [`
   `],
   template: `
-    <h2>Developer: Michael Koltasheu</h2>
-    <div>
-      <h2>Belarus, Minsk</h2>
-      <h3>
-        immerification@gmail.com
-      </h3>
+    <div class="inner-wrapper">
+      <h2>Developer:</h2>
+        <p>
+          Michael Koltasheu
+        </p>
+        <h2>Contacts:</h2>
+        <p>
+          Belarus, Minsk
+        </p>
+        <p>
+          email: immerification@gmail.com
+        </p>
     </div>
   `
 })

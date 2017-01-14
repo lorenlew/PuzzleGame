@@ -1,4 +1,10 @@
 /*styles for home content only*/
 #game-button {
-  background-color: gold;
+  background-color: rgba(255, 215, 0, 0.7);
+  align-self: flex-end;
+}
+
+.home-container {
+  flex-direction: column;
+  display: flex;
 }

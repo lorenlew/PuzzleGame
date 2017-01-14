@@ -1,8 +1,9 @@
 <div class="game-container">
-  <p> Number of steps: {{numberOfSteps}}.</p>
-  <p> Manhattan distance: {{board.manhattanDistance}}.</p>
+  <div class="statistics-container">
+    <p> Number of steps: {{numberOfSteps}}.</p>
+    <p> Manhattan distance: {{board.manhattanDistance}}.</p>
 
-
+  </div>
   Select mode:
   <select [(ngModel)]="dimension" (change)="restartTheGame()">
     <option *ngFor="let dimension of dimensions" [ngValue]="dimension">{{dimension}}</option>

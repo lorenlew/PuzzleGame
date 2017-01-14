@@ -1,4 +1,5 @@
 ﻿
+<div class="home-container">
   <h1 x-large class="sample-content">Puzzle game</h1>
 
   <h3>
@@ -9,9 +10,10 @@
     respectively, for the number of tiles and the number of spaces. The object of the puzzle is to place the tiles in
     order by making sliding moves that use the empty space.
   </h3>
-    <a md-raised-button [routerLink]="['./game']" id="game-button">
-      Play Game
-    </a>
+  <a md-raised-button [routerLink]="['./game']" id="game-button">
+    Play Game
+  </a>
   <main>
     <router-outlet></router-outlet>
   </main>
+</div>
