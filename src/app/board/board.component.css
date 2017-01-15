@@ -31,20 +31,17 @@
     text-shadow: 1px 1px 1px rgba(32, 32, 32, 0.47);
   }
 
-@media not handheld {
-  .tile:not(.empty):hover {
-    opacity: 0.8;
-  }
-}
+    .tile:not(.empty):hover {
+      opacity: 0.8;
+    }
 
 .tile-value {
   margin: auto;
 }
-
-.tile.isMoving {
+.isMoving {
   opacity: 0.8;
-}
 
+}
 .empty.tile {
   background-color: inherit;
 }
