@@ -34,14 +34,17 @@ export class BoardService {
     return (tile.positionX - 1) * boardDimension + tile.positionY;
   }
 
-  isMovingTileAdjacentToEmptyCell(board: Board, tile: Tile): boolean {
+  isPossibleToMoveTile(board: Board, tile: Tile): boolean {
     let isDistanceAlongSameAxisMinimal = (firstCellAxisPosition: number, secondCellAxisPosition: number): boolean => {
       const minimalDistanceAlongAxis = 1;
 
       return (Math.abs(firstCellAxisPosition - secondCellAxisPosition) === minimalDistanceAlongAxis);
     }
-    return tile.positionX === board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, board.emptyCell.positionY) ||
+    let isMovingTileAdjacentToEmptyCell: boolean =
+      tile.positionX === board.emptyCell.positionX && isDistanceAlongSameAxisMinimal(tile.positionY, board.emptyCell.positionY) ||
       tile.positionY === board.emptyCell.positionY && isDistanceAlongSameAxisMinimal(tile.positionX, board.emptyCell.positionX);
+
+    return isMovingTileAdjacentToEmptyCell;
   }
 
   private isPossibleToSolveBoard(board: Board): boolean {

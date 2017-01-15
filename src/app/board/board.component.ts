@@ -72,14 +72,12 @@ export class BoardComponent implements OnInit {
   }
 
   tryMoveTileToAnEmptyCell(tile: Tile): void {
-    if (this.boardService.isMovingTileAdjacentToEmptyCell(this.board, tile)) {
-      tile.toogleMovingState();
-      let newEmptyCell = new Cell(tile.positionX, tile.positionY);
-      tile.positionX = this.board.emptyCell.positionX;
-      tile.positionY = this.board.emptyCell.positionY;
-      this.board.emptyCell = newEmptyCell;
+    if (this.boardService.isPossibleToMoveTile(this.board, tile)) {
+      let oldCoordinatesOfTile: [number, number] = [tile.positionX, tile.positionY];
+
+      tile.move(this.board.emptyCell.positionX, this.board.emptyCell.positionY);
+      this.board.emptyCell.move(oldCoordinatesOfTile[0], oldCoordinatesOfTile[1]);
       this.numberOfSteps++;
-      setTimeout(() => tile.toogleMovingState(), 200);
     }
   }
 
